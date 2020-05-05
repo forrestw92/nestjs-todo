@@ -12,9 +12,9 @@ export class TodoType {
     @Field()
     scheduledDate: string;
 
-    @Field()
+    @Field(type => [String])
     labels: string[];
 
-    @Field(type => TodoPriority, { defaultValue: TodoPriority.P4 })
+    @Field(returns => TodoPriority)
     priority: TodoPriority;
 }
