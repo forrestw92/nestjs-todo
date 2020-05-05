@@ -2,10 +2,7 @@ import { Field, InputType } from '@nestjs/graphql';
 import { TodoPriority } from './todo-priority.enum';
 
 @InputType()
-export class TodoInput {
-    @Field()
-    id: string;
-
+export class CreateTodoInput {
     @Field()
     name: string;
 
