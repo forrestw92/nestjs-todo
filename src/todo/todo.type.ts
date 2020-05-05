@@ -15,6 +15,6 @@ export class TodoType {
     @Field()
     labels: string[];
 
-    @Field(type => TodoPriority)
+    @Field(type => TodoPriority, { defaultValue: TodoPriority.P4 })
     priority: TodoPriority;
 }

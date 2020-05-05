@@ -18,6 +18,6 @@ export class Todo {
     @Column()
     labels: string[];
 
-    @Column()
+    @Column({ default: TodoPriority.P4 })
     priority: TodoPriority;
 }
