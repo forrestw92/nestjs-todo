@@ -23,6 +23,9 @@ export class TodoService {
         });
         return this.todoRepository.save(todo);
     }
+    async getOneTodo(id: string): Promise<Todo> {
+        return this.todoRepository.findOne({ id });
+    }
     async getAllTodos(): Promise<Todo[]> {
         return this.todoRepository.find();
     }

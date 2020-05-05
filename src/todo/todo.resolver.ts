@@ -17,4 +17,9 @@ export class TodoResolver {
     todos() {
         return this.todoService.getAllTodos();
     }
+
+    @Query(returns => TodoType)
+    todo(@Args('id') id: string) {
+        return this.todoService.getOneTodo(id);
+    }
 }
