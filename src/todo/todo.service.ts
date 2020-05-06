@@ -1,6 +1,6 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { DeleteResult, Repository } from 'typeorm';
 import { Todo } from './todo.entity';
 import { v4 as uuid } from 'uuid';
 import { TodoPriority } from './todo-priority.enum';
@@ -28,5 +28,13 @@ export class TodoService {
     }
     async getAllTodos(): Promise<Todo[]> {
         return this.todoRepository.find();
+    }
+    async deleteTodo(id: string): Promise<Boolean> {
+        const todo: Todo = await this.getOneTodo(id);
+        if (!todo) {
+            throw new NotFoundException(`Todo ID "${id}" not found`);
+        }
+        const result = await this.todoRepository.remove(todo);
+        return true;
     }
 }
